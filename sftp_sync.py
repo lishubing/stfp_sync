@@ -10,7 +10,8 @@ class SyncServer(object):
 
     def __init__(self, server, **kw):
         '''Server initialization
-        :param:See params of pysftp.Connection URL:http://pysftp.readthedocs.org/en/latest/pysftp.html
+        :param:See document of pysftp.Connection:
+               http://pysftp.readthedocs.org/en/latest/pysftp.html
         '''
         self.logger = logging.getLogger('sftp_sync_logger')
         self.log_handler = logging.StreamHandler()
@@ -45,10 +46,12 @@ class SyncServer(object):
             return False
 
     def allow(self, *args):
+        '''Set the allow patterns using regex expression.
+        '''
         self.allows.update(*args)
 
     def sftp_upload(self, paths):
-        '''Upload a list of files using sftp. 
+        '''Upload a list of files using sftp.
         :param paths: The absolute paths of files need to be uploaded.
         :type paths:list
         :return:None
@@ -98,4 +101,4 @@ class SyncServer(object):
                     file_dict[file] = new_status
             if len(paths):
                 self.sftp_upload(paths)
-            #time.sleep(0.5)
+            time.sleep(0.5)

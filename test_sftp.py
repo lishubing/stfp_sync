@@ -12,6 +12,7 @@ if __name__ == '__main__':
                         username=USERNAME,
                         private_key=PRIVATE_KEY,
                         )
-
+    # allow patterns must be set, or nothing will be monified.
+    # files paths is allowed as long as its path contain the regex pattern.
     server.allow(ALLOWS)
     server.run(LOCAL,REMOTE)
